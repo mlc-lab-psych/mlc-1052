@@ -1,0 +1,15 @@
+services:
+  redis:
+    image: redis:7
+    container_name: mlc-1052-v3-redis
+    ports:
+      - "6379:6379"
+  mlc-1052-v3:
+    build: 
+      context: .
+      dockerfile: Containerfile
+    container_name:  mlc-1052-v3
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
