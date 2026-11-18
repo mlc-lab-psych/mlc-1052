@@ -941,6 +941,25 @@
 
             timeline.push(comment_block);
 
+            const conceptualize_block = {
+                type: jsPsychSurveyHtmlForm,
+                html: `
+                    <div style="text-align: center;">
+                        <p>Thank you for your responses. We are interested in how people conceptualize entities in the natural world. If you have any questions, please contact: lrrgsh@rit.edu</p>
+                        <p>When you select continue, you will be redirected back to Prolific</p>
+
+                        <label style="font-weight: bold" for="comments_description">Do you have any comments about this task?</label><br>
+                        <input class="demo-input" style="margin-left: 0;" placeholder="Comments..." type="text" id="comments_description" name="comments_description">
+                    </div>
+                `,
+                button_label: 'Continue',
+                on_finish: function(data) {
+                    sendResults(jsPsych.data.get()['trials']);
+                }
+            };
+
+            timeline.push(conceptualize_block);
+
             const end_block = {
                 type: jsPsychHtmlKeyboardResponse,
                 stimulus: '<p>Thanks for participating! You will be now redirected to Prolific within 10s.</p>',
